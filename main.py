@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from pathlib import Path
 import pandas as pd
 import numpy as np
-from starter.starter.ml.data import process_data
+from starter.ml.data import process_data
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 app = FastAPI()
