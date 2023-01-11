@@ -13,11 +13,11 @@ def model_encoder_fixture():
     BASE_DIR = Path(__file__).resolve(strict=True).parent
     print(BASE_DIR)
 
-    with open('starter/starter/saved_model/trained_model.pkl', 'rb') as f:
+    with open('starter/saved_model/trained_model.pkl', 'rb') as f:
         model = pickle.load(f)
         f.close()
 
-    with open('starter/starter/saved_model/encoder.pkl', 'rb') as f:
+    with open('starter/saved_model/encoder.pkl', 'rb') as f:
         encoder = pickle.load(f)
         f.close()
 
@@ -26,7 +26,7 @@ def model_encoder_fixture():
 
 @pytest.fixture
 def data_fixture():
-    data = pd.read_csv("starter/data/census.csv")
+    data = pd.read_csv("data/census.csv")
     # Optional enhancement, use K-fold cross validation instead of a train-test split.
     train, test = train_test_split(data, test_size=0.20)
     return train, test
