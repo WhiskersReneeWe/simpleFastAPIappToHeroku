@@ -4,8 +4,8 @@ import numpy as np
 import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from starter.starter.ml.data import process_data
-from starter.starter.ml.model import train_model, compute_model_metrics, inference
+from starter.ml.data import process_data
+from starter.ml.model import train_model, compute_model_metrics, inference
 from pathlib import Path
 
 @pytest.fixture
