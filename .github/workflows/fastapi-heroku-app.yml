@@ -4,7 +4,7 @@ name: Pytest and Flake8
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 permissions:
   contents: read
