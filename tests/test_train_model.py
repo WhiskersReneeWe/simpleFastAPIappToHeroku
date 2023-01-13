@@ -36,9 +36,11 @@ def data_fixture():
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 #train, test = train_test_split(data, test_size=0.20)
 
-def test_train_model(data_fixture):
+def test_train_model(model_encoder_fixture):
     random_state = 1234
     training, testing = data_fixture
+    model, encoder =  model_encoder_fixture
+
     cat_features = [
         "workclass",
         "education",
@@ -49,14 +51,15 @@ def test_train_model(data_fixture):
         "sex",
         "native-country",
     ]
-    X_train, y_train, encoder, lb = process_data(
-        training, categorical_features=cat_features, label="salary", training=True
+    X_test, y_test, _, lb = process_data(
+        testing, categorical_features=cat_features, label="salary", training=False, encoder=encoder
     )
-    model = LogisticRegression(random_state=random_state).fit(X_train, y_train)
+   # model = LogisticRegression(random_state=random_state).fit(X_train, y_train)
 
     # model = RandomForestClassifier(random_state)
     # model.fit(X_train, y_train)
     assert model is not None
+    assert encoder is not None
 
 def test_compute_metrics(data_fixture, model_encoder_fixture):
     """
@@ -98,11 +101,11 @@ def test_inference(data_fixture, model_encoder_fixture):
         "sex",
         "native-country",
     ]
-    X_train, y_train, encoder, lb = process_data(
-        training, categorical_features=cat_features, label="salary", training=True
+    X_test, y_test, _, lb = process_data(
+        testing, categorical_features=cat_features, label="salary", training=False, encoder=encoder
     )
-    preds = inference(model, X_train)
-    assert len(preds) == len(X_train)  # Assert that the length is the same as x_train
+    preds = inference(model, X_test)
+    assert len(preds) == len(X_test)  # Assert that the length is the same as x_train
 
 def test_model_types(model_encoder_fixture):
     model, encoder = model_encoder_fixture
