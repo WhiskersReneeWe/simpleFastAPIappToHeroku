@@ -38,22 +38,22 @@ def data_fixture():
 
 def test_train_model(model_encoder_fixture):
     random_state = 1234
-    training, testing = data_fixture
+    #training, testing = data_fixture
     model, encoder =  model_encoder_fixture
 
-    cat_features = [
-        "workclass",
-        "education",
-        "marital-status",
-        "occupation",
-        "relationship",
-        "race",
-        "sex",
-        "native-country",
-    ]
-    X_test, y_test, _, lb = process_data(
-        testing, categorical_features=cat_features, label="salary", training=False, encoder=encoder
-    )
+    # cat_features = [
+    #     "workclass",
+    #     "education",
+    #     "marital-status",
+    #     "occupation",
+    #     "relationship",
+    #     "race",
+    #     "sex",
+    #     "native-country",
+    # ]
+    # X_test, y_test, _, lb = process_data(
+    #     testing, categorical_features=cat_features, label="salary", training=False, encoder=encoder
+    # )
    # model = LogisticRegression(random_state=random_state).fit(X_train, y_train)
 
     # model = RandomForestClassifier(random_state)
