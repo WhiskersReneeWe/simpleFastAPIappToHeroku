@@ -53,3 +53,7 @@ if __name__ == "__main__":
     print("Saving the logistic regression model ...")
     with open(f'{BASE_DIR}/saved_model/trained_model.pkl', 'wb') as f:
         pickle.dump(trained_model, f)
+
+    print("Saving the LablerEncod ...")
+    with open(f'{BASE_DIR}/saved_model/lb.pkl', 'wb') as f:
+        pickle.dump(lb, f)
