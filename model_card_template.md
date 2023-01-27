@@ -9,16 +9,18 @@ This model should be used to predict the salary of US citizens based on a list o
 
 ## Training Data
 Data was obtained from: https://archive.ics.uci.edu/ml/datasets/census+income
+80% of total data is used for training.
 
 ## Evaluation Data
 Data was obtained from: https://archive.ics.uci.edu/ml/datasets/census+income
-Evaluation data was extracted from the original data by random splitting.
+Evaluation data was extracted from the original data by random splitting. 
+20% of total data is used for evaluation.
 
 ## Metrics
 The model was evaluated using precision, recall, fbeta, respectively.
 
 ## Ethical Considerations
-No comment.
+My model is using potentially biased data on race and professions. The results might be biased.
 
 ## Caveats and Recommendations
 We need a more balanced data because the gender is skewed.

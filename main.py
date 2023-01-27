@@ -63,7 +63,7 @@ async def predict(payload: Predictor):
     payload_dataframe.columns = payload_dataframe.columns.str.replace("_", "-")
 
     # prepare the data
-    processed_epoch, _, _, _ = process_data(
+    processed, _, _, _ = process_data(
         payload_dataframe,
         categorical_features=cat_features,
         training=False,
@@ -71,11 +71,11 @@ async def predict(payload: Predictor):
         lb=lb,
     )
     # Calling the inference function to make a prediction
-    raw_pred = model.predict(processed_epoch)
+    raw_pred = model.predict(processed)
 
     # Return the prediction in the expected format
     if raw_pred == 0:
-        pred = "Income < 50k"
+        pred = "Income <= 50k"
     elif raw_pred == 1:
         pred = "Income > 50k"
 
