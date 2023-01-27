@@ -1,6 +1,6 @@
 import requests
 
-r = requests.get('https://little-turtle.herokuapp.com/')
+r = requests.get('https://nameless-brushlands-32546.herokuapp.com/')
 
 print(r.status_code)
 print(r.json())
