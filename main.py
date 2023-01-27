@@ -22,6 +22,11 @@ with open(f'{BASE_DIR}/starter/saved_model/encoder.pkl', 'rb') as f:
     encoder = pickle.load(f)
     f.close()
 
+with open(f'{BASE_DIR}/starter/saved_model/lb.pkl', 'rb') as f:
+    lb = pickle.load(f)
+    f.close()
+
+
 cat_features = [
     "workclass",
     "education",
@@ -63,7 +68,7 @@ async def predict(payload: Predictor):
         categorical_features=cat_features,
         training=False,
         encoder=encoder,
-        label=None,
+        lb=lb,
     )
     # Calling the inference function to make a prediction
     raw_pred = model.predict(processed_epoch)
