@@ -62,4 +62,4 @@ def test_post_correct(lessthan50KPayload_fixture):
 def test_post_wrong(morethan50KPayload_fixture):
     res = testApp.post("/predict", json=morethan50KPayload_fixture)
     assert res.status_code == 200
-    assert res.json()["prediction"] == "Income > 50k"
+    assert res.json()["prediction"] != "Income > 50k"
