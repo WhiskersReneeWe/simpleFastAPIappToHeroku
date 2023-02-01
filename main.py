@@ -40,8 +40,8 @@ cat_features = [
 ]
 
 # reference: https://medium.com/analytics-vidhya/camel-case-models-with-fast-api-and-pydantic-5a8acb6c0eee
-def to_camelize(feature_string):
-    return camelize(feature_string)
+def to_hyphen(underscore_string):
+    return underscore_string.replace("_", '-')
 
 class Predictor(BaseModel):
     age: int
@@ -60,7 +60,7 @@ class Predictor(BaseModel):
     native_country: str
 
     class Config:
-        alias_generator = to_camelize
+        alias_generator = to_hyphen
         allow_population_by_field_name = True
 
 @app.post("/predict")
