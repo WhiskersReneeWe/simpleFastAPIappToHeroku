@@ -6,6 +6,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 from starter.ml.data import process_data
+from humps import camelize
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 app = FastAPI()
@@ -38,6 +39,10 @@ cat_features = [
     "native-country",
 ]
 
+# reference: https://medium.com/analytics-vidhya/camel-case-models-with-fast-api-and-pydantic-5a8acb6c0eee
+def to_camelize(feature_string):
+    return camelize(feature_string)
+
 class Predictor(BaseModel):
     age: int
     workclass: str
@@ -53,6 +58,10 @@ class Predictor(BaseModel):
     capital_loss: int
     hours_per_week: int
     native_country: str
+
+    class Config:
+        alias_generator = to_camelize
+        allow_population_by_field_name = True
 
 @app.post("/predict")
 async def predict(payload: Predictor):
