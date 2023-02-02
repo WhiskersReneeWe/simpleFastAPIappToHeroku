@@ -18,6 +18,7 @@ Evaluation data was extracted from the original data by random splitting.
 
 ## Metrics
 The model was evaluated using precision, recall, fbeta, respectively.
+Their values are 0.7386759581881533 0.26717076244486454 0.3924109208699676, respectively.
 
 ## Ethical Considerations
 My model is using potentially biased data on race and professions. The results might be biased.
