@@ -65,11 +65,10 @@ class Predictor(BaseModel):
 
 @app.post("/predict")
 async def predict(payload: Predictor):
+
     payload_dict = dict(payload)
     payload_dataframe = pd.DataFrame(payload_dict, columns=payload_dict.keys(), index=[0])
 
-    # convert all the "_ " to "-" in the dataframe
-    payload_dataframe.columns = payload_dataframe.columns.str.replace("_", "-")
 
     # prepare the data
     processed, _, _, _ = process_data(
@@ -90,6 +89,8 @@ async def predict(payload: Predictor):
 
     res = {"prediction": pred}
     return res
+
+
 
 @app.get("/")
 async def welcome():
