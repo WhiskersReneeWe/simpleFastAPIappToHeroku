@@ -13,15 +13,15 @@ def model_encoder_fixture():
     BASE_DIR = Path(__file__).resolve(strict=True).parent
     print(BASE_DIR)
 
-    with open('starter/saved_model/trained_model.pkl', 'rb') as f:
+    with open('/Users/reneeliu/Desktop/simpleFastAPIappToHeroku/starter/saved_model/trained_model.pkl', 'rb') as f:
         model = pickle.load(f)
         f.close()
 
-    with open('starter/saved_model/encoder.pkl', 'rb') as f:
+    with open('/Users/reneeliu/Desktop/simpleFastAPIappToHeroku/starter/saved_model/encoder.pkl', 'rb') as f:
         encoder = pickle.load(f)
         f.close()
 
-    with open(f'{BASE_DIR}/starter/saved_model/lb.pkl', 'rb') as f:
+    with open('/Users/reneeliu/Desktop/simpleFastAPIappToHeroku/starter/saved_model/lb.pkl', 'rb') as f:
         lb = pickle.load(f)
         f.close()
 
