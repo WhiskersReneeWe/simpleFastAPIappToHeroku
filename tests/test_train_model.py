@@ -94,7 +94,7 @@ def test_compute_metrics(data_fixture, model_encoder_fixture):
     assert fbeta >= 0
 
 def test_inference(data_fixture, model_encoder_fixture):
-    model, encoder = model_encoder_fixture
+    model, encoder, lb= model_encoder_fixture
     training, testing = data_fixture
     cat_features = [
         "workclass",
@@ -107,11 +107,11 @@ def test_inference(data_fixture, model_encoder_fixture):
         "native-country",
     ]
     X_test, y_test, _, lb = process_data(
-        testing, categorical_features=cat_features, label="salary", training=False, encoder=encoder
+        testing, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb
     )
     preds = inference(model, X_test)
     assert len(preds) == len(X_test)  # Assert that the length is the same as x_train
 
 def test_model_types(model_encoder_fixture):
-    model, encoder = model_encoder_fixture
+    model, _, _= model_encoder_fixture
     assert model is not None
