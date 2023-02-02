@@ -66,7 +66,7 @@ class Predictor(BaseModel):
 @app.post("/predict")
 async def predict(payload: Predictor):
 
-    payload_dict = dict(payload)
+    payload_dict = payload_dict = payload.dict(by_alias=True)
     payload_dataframe = pd.DataFrame(payload_dict, columns=payload_dict.keys(), index=[0])
 
 
