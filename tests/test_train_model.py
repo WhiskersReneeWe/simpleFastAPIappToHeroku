@@ -21,7 +21,11 @@ def model_encoder_fixture():
         encoder = pickle.load(f)
         f.close()
 
-    return model, encoder
+    with open(f'{BASE_DIR}/starter/saved_model/lb.pkl', 'rb') as f:
+        lb = pickle.load(f)
+        f.close()
+
+    return model, encoder, lb
 
 
 @pytest.fixture
@@ -67,7 +71,7 @@ def test_compute_metrics(data_fixture, model_encoder_fixture):
     """
     random_state = 1234
     training, testing = data_fixture
-    model, encoder = model_encoder_fixture
+    model, encoder, lb = model_encoder_fixture
     cat_features = [
         "workclass",
         "education",
@@ -79,7 +83,8 @@ def test_compute_metrics(data_fixture, model_encoder_fixture):
         "native-country",
     ]
     X_test, y_test, encoder, lb = process_data(
-        testing, categorical_features=cat_features, label="salary", training=False
+        testing, categorical_features=cat_features, label="salary", training=False,
+        encoder=encoder, lb=lb
     )
 
     predictions = model.predict(X_test)
