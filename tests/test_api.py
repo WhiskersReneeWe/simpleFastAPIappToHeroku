@@ -27,16 +27,16 @@ morethan50KPayload = {
           "workclass": "Federal-gov",
           "fnlgt": 251585,
           "education": "Bachelors",
-          "education_num": 13,
-          "marital_status": "Divorced",
+          "education-num": 13,
+          "marital-status": "Divorced",
           "occupation": "Exec-managerial",
           "relationship": "Not-in-family",
           "race": "White",
           "sex": "Male",
-          "capital_gain": 0,
-          "capital_loss": 0,
-          "hours_per_week": 55,
-          "native_country": "United-States"
+          "capital-gain": 0,
+          "capital-loss": 0,
+          "hours-per-week": 55,
+          "native-country": "United-States"
 }
 
 badPayload = {}
