@@ -1,7 +1,7 @@
 from typing import Union
 import pickle
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from pathlib import Path
 import pandas as pd
 import numpy as np
@@ -41,23 +41,23 @@ cat_features = [
 
 # reference: https://medium.com/analytics-vidhya/camel-case-models-with-fast-api-and-pydantic-5a8acb6c0eee
 def to_hyphen(underscore_string):
-    return underscore_string.replace("_", '-')
+    return f"{underscore_string}".replace('_', '-')
 
 class Predictor(BaseModel):
-    age: int
-    workclass: str
-    fnlgt: int
-    education: str
-    education_num: int
-    marital_status: str
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int
-    capital_loss: int
-    hours_per_week: int
-    native_country: str
+    age: int = Field(..., example=31)
+    workclass: str = Field(..., example="Private")
+    fnlgt: int = Field(..., example=45781)
+    education: str = Field(..., example="Masters")
+    education_num: int = Field(..., example=14)
+    marital_status: str = Field(..., example="Married-civ-spouse")
+    occupation: str = Field(..., example="Prof-specialty")
+    relationship: str = Field(..., example="Wife")
+    race: str = Field(..., example="White")
+    sex: str = Field(..., example="Female")
+    capital_gain: int = Field(..., example=5000)
+    capital_loss: int = Field(..., example=5000)
+    hours_per_week: int = Field(..., example=50)
+    native_country: str = Field(..., example="United-States")
 
     class Config:
         alias_generator = to_hyphen
