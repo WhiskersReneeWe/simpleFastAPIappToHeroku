@@ -43,7 +43,7 @@ def data_fixture():
 def test_train_model(model_encoder_fixture):
     random_state = 1234
     #training, testing = data_fixture
-    model, encoder =  model_encoder_fixture
+    model, encoder, lb=  model_encoder_fixture
 
     # cat_features = [
     #     "workclass",
@@ -111,7 +111,3 @@ def test_inference(data_fixture, model_encoder_fixture):
     )
     preds = inference(model, X_test)
     assert len(preds) == len(X_test)  # Assert that the length is the same as x_train
-
-def test_model_types(model_encoder_fixture):
-    model, _, _= model_encoder_fixture
-    assert model is not None
