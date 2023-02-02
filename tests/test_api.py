@@ -51,7 +51,7 @@ def morethan50KPayload_fixture():
 
 def test_get():
     res = testApp.get("/")
-    assert res.json()["result"] == "Welcome to CENSUS API. You can type in a JSON body containing 14 attributes to get back a salary prediction"
+    assert res.json()["result"] == "Welcome to Renee's CENSUS API. You can type in a JSON body containing 14 attributes to get back a salary prediction"
     assert res.status_code == 200
 
 def test_post_correct(lessthan50KPayload_fixture):

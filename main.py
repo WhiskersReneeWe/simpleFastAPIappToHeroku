@@ -64,10 +64,10 @@ class Predictor(BaseModel):
         allow_population_by_field_name = True
 
 @app.post("/predict")
-async def predict(payload):
+async def predict(payload: Predictor):
 
     payload_dict = payload.dict(by_alias=True)
-    payload_dataframe = pd.DataFrame(payload_dict, columns=payload_dict.keys(), index=[0])
+    payload_dataframe = pd.DataFrame(data=payload_dict, index=[0])
 
 
     # prepare the data
