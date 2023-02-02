@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 r = requests.get('https://nameless-brushlands-32546.herokuapp.com/')
@@ -19,10 +21,16 @@ data = {
     "capital-gain": 0,
     "capital-loss": 0,
     "hours-per-week": 40,
-    "native-country": "United-States"}
+    "native-country": "United-States"
+}
 
+# row = {}
+# for k, v in data.items():
+#     row[k.replace("-", '_')] = v
+#
+# print(row)
 
 r = requests.post('https://nameless-brushlands-32546.herokuapp.com/predict', json=data)
-
+#
 print(r.status_code)
 print(r.json())

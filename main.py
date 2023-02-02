@@ -64,7 +64,7 @@ class Predictor(BaseModel):
         allow_population_by_field_name = True
 
 @app.post("/predict")
-async def predict(payload: Predictor):
+async def predict(payload):
 
     payload_dict = payload.dict(by_alias=True)
     payload_dataframe = pd.DataFrame(payload_dict, columns=payload_dict.keys(), index=[0])
@@ -94,7 +94,7 @@ async def predict(payload: Predictor):
 
 @app.get("/")
 async def welcome():
-    result = "Welcome to CENSUS API. " \
+    result = "Welcome to Renee's CENSUS API. " \
              "You can type in a JSON body containing 14 attributes to get back a salary prediction"
 
     return {"result": result, "health_check": "OK"}
