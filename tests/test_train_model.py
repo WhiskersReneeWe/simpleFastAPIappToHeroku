@@ -78,12 +78,12 @@ def test_compute_metrics(data_fixture, model_encoder_fixture):
         "sex",
         "native-country",
     ]
-    X_train, y_train, encoder, lb = process_data(
-        training, categorical_features=cat_features, label="salary", training=True
+    X_test, y_test, encoder, lb = process_data(
+        testing, categorical_features=cat_features, label="salary", training=False
     )
 
-    predictions = model.predict(X_train)
-    precision, recall, fbeta = compute_model_metrics(y_train, predictions)
+    predictions = model.predict(X_test)
+    precision, recall, fbeta = compute_model_metrics(y_test, predictions)
     assert precision >= 0.2
     assert recall >= 0.2
     assert fbeta >= 0
